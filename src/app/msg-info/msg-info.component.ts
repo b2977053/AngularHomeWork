@@ -4,7 +4,7 @@ import { TasksService } from 'Services/tasks.service';
 @Component({
   selector: 'app-msg-info',
   template: `
-    Message Count : {{ msgCount }}
+    Message Count : {{ _tasks.getList().length }}
   `,
   styles: [
   ]
