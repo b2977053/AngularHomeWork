@@ -13,7 +13,7 @@ export class TasksService {
     this.messages.push({
       user: '1',
       msgContent: arg0,
-      msgStatus: Status.OnGo
+      msgStatus: Status.Active
     });
   }
 
