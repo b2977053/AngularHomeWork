@@ -6,26 +6,39 @@ import { Status } from "./Models/status";
   providedIn: 'root'
 })
 export class TasksService {
+  private taskIndex = 0;
   private messages: Message[] = [];
 
   // 新增
-  push(arg0: string) {
+  push(arg0: string, user: string = '1') {
     this.messages.push({
-      user: '1',
+      id: this.taskIndex++,
+      user: user,
       msgContent: arg0,
       msgStatus: Status.Active
     });
   }
 
   // 取得清單
-  getList(){
-
-    return this.messages;
+  getList(user: string = '1',
+  msgStatus: Status = Status.None){
+    return this.messages.filter(message => {
+      // 篩選條件
+      return (
+        (message.user === user) &&
+        (message.msgStatus === msgStatus)
+      );
+    });
   }
 
   // 作廢
-  cancel(index: number){
-    this.messages[index].msgStatus = Status.Cancel;
+  cancel(id: number){
+    this.messages = this.messages.map(d=>{
+      if (d.id === id) {
+        d.msgStatus = Status.Cancel;
+      }
+      return d;
+    });
   }
 
   constructor() { }

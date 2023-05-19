@@ -6,12 +6,12 @@ import { Status } from 'Services/Models/status';
 @Component({
   selector: 'app-msg-list',
   template: `
-  <div *ngFor="let item of _tasks.getList();let i = index"
+  <div *ngFor="let item of _tasks.getList('1', statusActive);let i = index"
   (mouseenter)="msgItemMouseEnter($event)"
   (mouseleave)="msgItemMouseLeave($event)"
   >
     {{item.msgContent}} - {{item.msgStatus}}
-    <input type="button" value="X" (click)="msgCancle(i)" style="display: none;">
+    <input type="button" value="X" (click)="msgCancle(item.id)" style="display: none;">
   </div>
   `,
   styles: [
@@ -20,12 +20,14 @@ import { Status } from 'Services/Models/status';
 export class MsgListComponent implements OnInit {
   _tasks = inject(TasksService);
 
+  statusActive = Status.Active;
   ngOnInit(): void {
 
   }
 
-  msgCancle(index: number) {
-    this._tasks.cancel(index);
+  msgCancle(id: number) {
+    console.log(id)
+    this._tasks.cancel(id);
   }
 
   msgItemMouseEnter($event: MouseEvent) {
