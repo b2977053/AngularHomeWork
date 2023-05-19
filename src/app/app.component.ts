@@ -13,12 +13,7 @@ export class AppComponent implements OnInit  {
 
   constructor(){  }
 
-  msgCount:number = 0;
-  ngOnInit(): void {
-    this._tasks.push("123");
-    this._tasks.push("456");
-    this._tasks.push("789");
 
-    this.msgCount = this._tasks.getList().length;
+  ngOnInit(): void {
   }
 }

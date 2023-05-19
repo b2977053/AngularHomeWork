@@ -1,45 +1,28 @@
 <style>
   div.div-body {
-display: flex;
-width: 100%;
-justify-content: center;
+    display: flex;
+    width: 100%;
+    justify-content: center;
     align-items: center;
   }
 
-  div.div-body > .parent{
+  div.div-body > .parent {
     width: 500px;
   }
-  div.div-body > .form input.btn{
-    margin:0px 10px;
-    width: 80px;
-  }
-  div.div-body > .form input{
-    width: 100%;
-  }
-
 </style>
 <div class="div-body">
   <div class="parent form">
     <div class="div-input-msg">
-      <input type="text" placeholder="What needs to be done?">
+      <app-msg-input></app-msg-input>
     </div>
     <div class="div-msg-list">
-      <div>123</div>
-      <div>123</div>
-      <div>123</div>
-      <div>123</div>
-      <div>123</div>
-      <div>123</div>
-      <div>123</div>
-      <div>123</div>
-      <div>123</div>
+      <app-msg-list></app-msg-list>
     </div>
-    <div class="div3"> Message Count : {{ msgCount }} </div>
-    <div class="div4">
-      <input type="button" class="btn" value="All">
-      <input type="button" class="btn" value="Active">
-      <input type="button" class="btn" value="Completed">
+    <div class="div-msg-info">
+      <app-msg-info></app-msg-info>
+    </div>
+    <div class="div-msg-btn">
+      <app-msg-button></app-msg-button>
     </div>
   </div>
 </div>
-
