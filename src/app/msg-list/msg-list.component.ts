@@ -6,8 +6,9 @@ import { Status } from 'Services/Models/status';
 @Component({
   selector: 'app-msg-list',
   template: `
-  <div *ngFor="let item of _tasks.getList()">
-    {{item.msgContent}}
+  <div *ngFor="let item of _tasks.getList();let i = index">
+    {{item.msgContent}} - {{item.msgStatus}}
+    <input type="button" value="X" (click)="msgCancle(i)">
   </div>
   `,
   styles: [
@@ -18,5 +19,9 @@ export class MsgListComponent implements OnInit  {
 
   ngOnInit(): void {
 
+  }
+
+  msgCancle(index: number){
+    this._tasks.cancel(index);
   }
 }
